@@ -1,0 +1,89 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis_data:/data]
+    networks: [backend]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    networks: [backend]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  vote:
+    build: ./vote
+    image: voting-vote:local
+    environment:
+      OPTION_A: Cats
+      OPTION_B: Dogs
+      REDIS_HOST: redis
+    ports: ["8080:8080"]
+    networks: [frontend, backend]
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  worker:
+    build: ./worker
+    image: voting-worker:local
+    environment:
+      REDIS_HOST: redis
+      POSTGRES_CONNECTION: Host=postgres;Port=5432;Database=${POSTGRES_DB:-postgres};Username=${POSTGRES_USER:-postgres};Password=${POSTGRES_PASSWORD:-postgres}
+      HEARTBEAT_FILE: /tmp/worker-heartbeat
+    networks: [backend]
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  result:
+    build: ./result
+    image: voting-result:local
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-postgres}
+    ports: ["8888:8888"]
+    networks: [frontend, backend]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:8888/health',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+    internal: true
+
+volumes:
+  postgres_data:
+  redis_data:

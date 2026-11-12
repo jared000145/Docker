@@ -1,0 +1,1 @@
+{"utc": "2026-11-08T15:15:59.918304+00:00", "phase": "swarm-recovered", "status": "PASS", "checks": ["health:8080", "health:8888", "both-pages-http", "vote:a:postgres-confirmed", "result-scores:a:websocket-confirmed", "vote:b:postgres-confirmed", "result-scores:b:websocket-confirmed", "invalid-vote:400"], "test_vote_removed": true}

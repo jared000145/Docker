@@ -1,0 +1,11 @@
+.env
+*.log
+**/__pycache__/
+**/node_modules/
+**/bin/
+**/obj/
+.DS_Store
+.local/
+*.zip
+*.zip.sha256
+.cluster.env

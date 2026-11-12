@@ -1,0 +1,62 @@
+﻿[
+    {
+        "Utc":  "2026-11-08T15:16:33.1234640Z",
+        "Url":  "http://localhost:18080/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:35.2567189Z",
+        "Url":  "http://localhost:18888/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:36.2937485Z",
+        "Url":  "http://localhost:18080/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:36.3267517Z",
+        "Url":  "http://localhost:18888/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:37.3567421Z",
+        "Url":  "http://localhost:18080/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:37.3892612Z",
+        "Url":  "http://localhost:18888/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:38.4290614Z",
+        "Url":  "http://localhost:18080/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:38.4643477Z",
+        "Url":  "http://localhost:18888/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:39.5121320Z",
+        "Url":  "http://localhost:18080/",
+        "Status":  200,
+        "ExpectedContent":  true
+    },
+    {
+        "Utc":  "2026-11-08T15:16:39.5517211Z",
+        "Url":  "http://localhost:18888/",
+        "Status":  200,
+        "ExpectedContent":  true
+    }
+]

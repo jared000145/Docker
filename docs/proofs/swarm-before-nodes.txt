@@ -1,0 +1,5 @@
+2026-11-08T15:12:19.119052+00:00
+ID                            HOSTNAME          STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+ptvgmdfdexa8ww44ku9xmsu9y *   supinfo-manager   Ready     Active         Leader           29.1.3
+qrrtje0fray1scwwxxeiidrx3     supinfo-worker1   Ready     Active                          29.1.3
+6y0gfoyrxku735gnn91pfdfb5     supinfo-worker2   Ready     Active                          29.1.3

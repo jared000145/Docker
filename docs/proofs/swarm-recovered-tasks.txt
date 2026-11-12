@@ -1,0 +1,17 @@
+2026-11-08T15:15:58.105833+00:00
+ID                          NAME                    IMAGE                             NODE              DESIRED STATE   CURRENT STATE             ERROR                       PORTS
+tdo79zd1nl1fmczyxnla2f31f   voting_postgres.1       postgres:15-alpine                supinfo-manager   Running         Running 28 minutes ago                                
+x1x0yvehnnd85gurepwylwubi    \_ voting_postgres.1   postgres:15-alpine                supinfo-manager   Shutdown        Shutdown 28 minutes ago                               
+k9ftvvfcrq3w4p08xtdai7gnu   voting_redis.1          redis:7-alpine                    supinfo-manager   Running         Running 28 minutes ago                                
+w6ouxhukmwrf6p9qowpfxa4cy    \_ voting_redis.1      redis:7-alpine                    supinfo-manager   Shutdown        Shutdown 28 minutes ago                               
+khtv6kgpnlil64ubbhjteh0nl   voting_result.1         supinfo.local/voting-result:1.0   supinfo-worker1   Running         Running 4 seconds ago                                 
+8wp7uni4ihbtchy0f2c7dlpz3    \_ voting_result.1     supinfo.local/voting-result:1.0   supinfo-worker1   Shutdown        Shutdown 4 seconds ago                                
+sx46twtgwi1krexx9fipjombp    \_ voting_result.1     supinfo.local/voting-result:1.0   supinfo-worker1   Shutdown        Shutdown 7 minutes ago                                
+vurvt4tim0xmca39hvwcj1cii   voting_result.2         supinfo.local/voting-result:1.0   supinfo-worker2   Running         Running 30 minutes ago                                
+agu8w5puneewu0ghg90i3jdvq   voting_vote.1           supinfo.local/voting-vote:1.0     supinfo-worker2   Running         Running 30 minutes ago                                
+iw91h1m1zai8th07bk30xyx09   voting_vote.2           supinfo.local/voting-vote:1.0     supinfo-worker1   Running         Running 4 seconds ago                                 
+omelziytuictmktjzcrp4ebe9    \_ voting_vote.2       supinfo.local/voting-vote:1.0     supinfo-worker1   Shutdown        Shutdown 4 seconds ago                                
+94sbollbv1l1r95sm67fc1gxc    \_ voting_vote.2       supinfo.local/voting-vote:1.0     supinfo-worker1   Shutdown        Shutdown 7 minutes ago                                
+vnb8dbywaion9a01yldxc8fc0   voting_worker.1         supinfo.local/voting-worker:1.0   supinfo-manager   Running         Running 28 minutes ago                                
+fsygp6zvhfn97q4pbzmfyshjx    \_ voting_worker.1     supinfo.local/voting-worker:1.0   supinfo-manager   Shutdown        Failed 28 minutes ago     "task: non-zero exit (1)"   
+kjjn2hognfzxf5aakyg61mm0w    \_ voting_worker.1     supinfo.local/voting-worker:1.0   supinfo-manager   Shutdown        Failed 28 minutes ago     "task: non-zero exit (1)"

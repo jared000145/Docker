@@ -1,0 +1,147 @@
+[
+    {
+        "Name": "voting-app_frontend",
+        "Id": "a91e26d979da3acf08dc27bec29ed1f49e691a1b6412577d1394d95ab56abc0d",
+        "Created": "2026-11-08T14:05:45.00728437Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {
+            "com.docker.compose.config-hash": "541ee8d929397484aed9858bd00d5f0d7fe8ccdfe7f8e34b0451cd75518211b9",
+            "com.docker.compose.network": "frontend",
+            "com.docker.compose.project": "voting-app",
+            "com.docker.compose.version": "5.6.1"
+        },
+        "Containers": {
+            "8aa5a90687d8fb4a8e0a789820f715688754b824e323db1d582b6cbd52e958a1": {
+                "Name": "voting-app-result-1",
+                "EndpointID": "f4a5b1088a2f64a9188953bbf2426767ad7d4d2d47e4f3cc7a298410653c3413",
+                "MacAddress": "56:38:39:94:00:35",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "901d56bc9ec81a45fe938c51dcd572536b930c70a11685218444a61e38d450a1": {
+                "Name": "voting-app-vote-1",
+                "EndpointID": "277e27a3e9814f5a08c32afea428c396c4616ae204ff72937535b8bcc2cedfce",
+                "MacAddress": "6a:30:6c:77:b3:8a",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 5,
+                        "DynamicIPsAvailable": 65531
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Name": "voting-app_backend",
+        "Id": "cafd08153e7368299d3b9036deaec05295231f29b6ffca94192392dcb4212c5e",
+        "Created": "2026-11-08T14:05:45.011762303Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": true,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {
+            "com.docker.compose.config-hash": "3946106bb85fd3c7dcc922815a8e412bded62fbca4bc15bd571afb690c1464d7",
+            "com.docker.compose.network": "backend",
+            "com.docker.compose.project": "voting-app",
+            "com.docker.compose.version": "5.6.1"
+        },
+        "Containers": {
+            "0327a3e6c67b2f4f60cc724fefcf6f9c05eacdd0c9ffc3ca857bb8f826cff4b0": {
+                "Name": "voting-app-redis-1",
+                "EndpointID": "768c270fb689e5dddc982f1a125877eb7446bcdea46612c675028e7979ddbe0e",
+                "MacAddress": "e6:28:41:a8:f6:36",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            },
+            "256eb85c9661545322144109f9977f06ec40fa43bb2c0553efb0620bc2f3e652": {
+                "Name": "voting-app-postgres-1",
+                "EndpointID": "8aef43faa302ff2adfb2eb72720d219050ca66428ab49e485dd1534ea97bf75a",
+                "MacAddress": "26:0a:46:ad:01:e8",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            },
+            "55a98800b15899dee664a2ce7424db668fc3036f871a6ae04a7415a07ca7cec1": {
+                "Name": "voting-app-worker-1",
+                "EndpointID": "07ecd4fb04d2d9cd1d5414299e5a1102dc13a58831bf907d8ba295360e2f0bad",
+                "MacAddress": "de:49:d3:a8:f1:0e",
+                "IPv4Address": "172.19.0.6/16",
+                "IPv6Address": ""
+            },
+            "8aa5a90687d8fb4a8e0a789820f715688754b824e323db1d582b6cbd52e958a1": {
+                "Name": "voting-app-result-1",
+                "EndpointID": "317434eba7e8c22753e24e000fdd6ebcbb7daf1aee0371710c41235647ecbaa1",
+                "MacAddress": "5a:1f:6d:82:f9:a4",
+                "IPv4Address": "172.19.0.4/16",
+                "IPv6Address": ""
+            },
+            "901d56bc9ec81a45fe938c51dcd572536b930c70a11685218444a61e38d450a1": {
+                "Name": "voting-app-vote-1",
+                "EndpointID": "3c8286aed40cd5c6aa4d6e756bf7990832dc8f791d1a5390ffe5dd6f2936360b",
+                "MacAddress": "a6:3f:bd:d0:94:05",
+                "IPv4Address": "172.19.0.5/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.19.0.0/16": {
+                        "IPsInUse": 8,
+                        "DynamicIPsAvailable": 65528
+                    }
+                }
+            }
+        }
+    }
+]

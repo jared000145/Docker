@@ -1,0 +1,25 @@
+2026-11-08T15:12:19.119052+00:00
+[
+    {
+        "CreatedAt": "2026-11-08T14:44:56Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.stack.namespace": "voting"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/voting_postgres_data/_data",
+        "Name": "voting_postgres_data",
+        "Options": null,
+        "Scope": "local"
+    },
+    {
+        "CreatedAt": "2026-11-08T14:44:55Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.stack.namespace": "voting"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/voting_redis_data/_data",
+        "Name": "voting_redis_data",
+        "Options": null,
+        "Scope": "local"
+    }
+]

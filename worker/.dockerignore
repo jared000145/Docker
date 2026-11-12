@@ -1,0 +1,9 @@
+.git
+.gitignore
+**/node_modules
+**/bin
+**/obj
+**/__pycache__
+**/*.py[cod]
+.env
+*.zip

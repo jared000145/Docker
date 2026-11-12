@@ -1,0 +1,6 @@
+REPOSITORY                    TAG         DIGEST                                                                    IMAGE ID       CREATED          SIZE
+supinfo.local/voting-result   1.0         sha256:50f9c7688bfc3fb1a6ed4377ba4a2b739cf36f8b71dd11883d219cccdc970e0c   50f9c7688bfc   30 minutes ago   259MB
+supinfo.local/voting-worker   1.0         sha256:2908e247e35a263869af1c4d1fd8b1287614a669e3c1b65be4a256fa52d73a8a   2908e247e35a   32 minutes ago   310MB
+supinfo.local/voting-vote     1.0         sha256:d7a669dd3ae7b753e1fb771bba836679bc26bb5e1a433a7df69bdb27d3ced095   d7a669dd3ae7   37 minutes ago   203MB
+redis                         7-alpine    sha256:c5d34a98396a4775e223c74e929162c35c5a2182901ba26b50ade939941ce14b   c5d34a98396a   2 days ago       57.8MB
+postgres                      15-alpine   sha256:aae6554de426ae1990f1a939ff183a0299146cf7142a6f4c379c3357af9cc2d8   aae6554de426   2 days ago       417MB

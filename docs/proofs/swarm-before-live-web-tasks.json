@@ -1,0 +1,60 @@
+{
+  "utc": "2026-11-08T15:12:19.119052+00:00",
+  "ready_nodes": [
+    "supinfo-manager",
+    "supinfo-worker1",
+    "supinfo-worker2"
+  ],
+  "services": {
+    "vote": {
+      "desired_tasks": [
+        {
+          "CurrentState": "Running 27 minutes ago",
+          "DesiredState": "Running",
+          "Error": "",
+          "ID": "agu8w5puneewu0ghg90i3jdvq",
+          "Image": "supinfo.local/voting-vote:1.0",
+          "Name": "voting_vote.1",
+          "Node": "supinfo-worker2",
+          "Ports": ""
+        },
+        {
+          "CurrentState": "Running 3 minutes ago",
+          "DesiredState": "Running",
+          "Error": "",
+          "ID": "omelziytuictmktjzcrp4ebe9",
+          "Image": "supinfo.local/voting-vote:1.0",
+          "Name": "voting_vote.2",
+          "Node": "supinfo-worker1",
+          "Ports": ""
+        }
+      ],
+      "running_on_ready_nodes": 2
+    },
+    "result": {
+      "desired_tasks": [
+        {
+          "CurrentState": "Running 3 minutes ago",
+          "DesiredState": "Running",
+          "Error": "",
+          "ID": "8wp7uni4ihbtchy0f2c7dlpz3",
+          "Image": "supinfo.local/voting-result:1.0",
+          "Name": "voting_result.1",
+          "Node": "supinfo-worker1",
+          "Ports": ""
+        },
+        {
+          "CurrentState": "Running 27 minutes ago",
+          "DesiredState": "Running",
+          "Error": "",
+          "ID": "vurvt4tim0xmca39hvwcj1cii",
+          "Image": "supinfo.local/voting-result:1.0",
+          "Name": "voting_result.2",
+          "Node": "supinfo-worker2",
+          "Ports": ""
+        }
+      ],
+      "running_on_ready_nodes": 2
+    }
+  }
+}

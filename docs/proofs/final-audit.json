@@ -1,0 +1,254 @@
+{
+  "utc": "2026-11-08T15:17:08.242700+00:00",
+  "status": "PASS",
+  "compose": [
+    {
+      "name": "/voting-app-postgres-1",
+      "health": "healthy",
+      "user": "",
+      "networks": [
+        "voting-app_backend"
+      ],
+      "ports": {
+        "5432/tcp": null
+      },
+      "volumes": [
+        {
+          "name": "voting-app_postgres_data",
+          "destination": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    {
+      "name": "/voting-app-redis-1",
+      "health": "healthy",
+      "user": "",
+      "networks": [
+        "voting-app_backend"
+      ],
+      "ports": {
+        "6379/tcp": null
+      },
+      "volumes": [
+        {
+          "name": "voting-app_redis_data",
+          "destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "/voting-app-result-1",
+      "health": "healthy",
+      "user": "app",
+      "networks": [
+        "voting-app_backend",
+        "voting-app_frontend"
+      ],
+      "ports": {
+        "8888/tcp": [
+          {
+            "HostIp": "0.0.0.0",
+            "HostPort": "8888"
+          },
+          {
+            "HostIp": "::",
+            "HostPort": "8888"
+          }
+        ]
+      },
+      "volumes": []
+    },
+    {
+      "name": "/voting-app-vote-1",
+      "health": "healthy",
+      "user": "appuser",
+      "networks": [
+        "voting-app_backend",
+        "voting-app_frontend"
+      ],
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "0.0.0.0",
+            "HostPort": "8080"
+          },
+          {
+            "HostIp": "::",
+            "HostPort": "8080"
+          }
+        ]
+      },
+      "volumes": []
+    },
+    {
+      "name": "/voting-app-worker-1",
+      "health": "healthy",
+      "user": "appuser",
+      "networks": [
+        "voting-app_backend"
+      ],
+      "ports": {},
+      "volumes": []
+    }
+  ],
+  "swarm_containers": {
+    "manager": [
+      {
+        "Command": "\"dotnet Worker.dll\"",
+        "CreatedAt": "2026-11-08 14:47:38 +0000 UTC",
+        "ID": "56bb13f986a5",
+        "Image": "supinfo.local/voting-worker:1.0",
+        "Labels": "com.docker.compose.project=voting-app,com.docker.compose.service=worker,com.docker.compose.version=5.6.1,com.docker.stack.namespace=voting,com.docker.swarm.node.id=ptvgmdfdexa8ww44ku9xmsu9y,com.docker.swarm.service.id=93jm88r39kxlwbl6s79659zh4,com.docker.swarm.service.name=voting_worker,com.docker.swarm.task.id=vnb8dbywaion9a01yldxc8fc0,com.docker.swarm.task.name=voting_worker.1.vnb8dbywaion9a01yldxc8fc0,com.docker.swarm.task=,org.opencontainers.image.version=24.04",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "voting_worker.1.vnb8dbywaion9a01yldxc8fc0",
+        "Networks": "voting_backend",
+        "Platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "29 minutes ago",
+        "Size": "12.3kB (virtual 223MB)",
+        "State": "running",
+        "Status": "Up 29 minutes (healthy)"
+      },
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-11-08 14:47:34 +0000 UTC",
+        "ID": "6ac48c7ebee6",
+        "Image": "redis:7-alpine",
+        "Labels": "com.docker.stack.namespace=voting,com.docker.swarm.node.id=ptvgmdfdexa8ww44ku9xmsu9y,com.docker.swarm.service.id=rfshr77d8ua59i6p219s11rcn,com.docker.swarm.service.name=voting_redis,com.docker.swarm.task.id=k9ftvvfcrq3w4p08xtdai7gnu,com.docker.swarm.task.name=voting_redis.1.k9ftvvfcrq3w4p08xtdai7gnu,com.docker.swarm.task=",
+        "LocalVolumes": "1",
+        "Mounts": "voting_redis_d\u2026",
+        "Names": "voting_redis.1.k9ftvvfcrq3w4p08xtdai7gnu",
+        "Networks": "voting_backend",
+        "Platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "29 minutes ago",
+        "Size": "4.1kB (virtual 41.1MB)",
+        "State": "running",
+        "Status": "Up 29 minutes (healthy)"
+      },
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-11-08 14:47:23 +0000 UTC",
+        "ID": "b67030233742",
+        "Image": "postgres:15-alpine",
+        "Labels": "com.docker.stack.namespace=voting,com.docker.swarm.node.id=ptvgmdfdexa8ww44ku9xmsu9y,com.docker.swarm.service.id=z881vv3rib3nwzd72g3j41mpc,com.docker.swarm.service.name=voting_postgres,com.docker.swarm.task.id=tdo79zd1nl1fmczyxnla2f31f,com.docker.swarm.task.name=voting_postgres.1.tdo79zd1nl1fmczyxnla2f31f,com.docker.swarm.task=",
+        "LocalVolumes": "1",
+        "Mounts": "voting_postgre\u2026",
+        "Names": "voting_postgres.1.tdo79zd1nl1fmczyxnla2f31f",
+        "Networks": "voting_backend",
+        "Platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "29 minutes ago",
+        "Size": "20.5kB (virtual 301MB)",
+        "State": "running",
+        "Status": "Up 29 minutes (healthy)"
+      }
+    ],
+    "worker1": [
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-11-08 15:15:49 +0000 UTC",
+        "ID": "399f9d9781c7",
+        "Image": "supinfo.local/voting-result:1.0",
+        "Labels": "com.docker.compose.project=voting-app,com.docker.compose.service=result,com.docker.compose.version=5.6.1,com.docker.stack.namespace=voting,com.docker.swarm.node.id=qrrtje0fray1scwwxxeiidrx3,com.docker.swarm.service.id=r5l2w0iilf1x5gjmp8itlephm,com.docker.swarm.service.name=voting_result,com.docker.swarm.task.id=khtv6kgpnlil64ubbhjteh0nl,com.docker.swarm.task.name=voting_result.1.khtv6kgpnlil64ubbhjteh0nl,com.docker.swarm.task=",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "voting_result.1.khtv6kgpnlil64ubbhjteh0nl",
+        "Networks": "ingress,voting_backend,voting_frontend",
+        "Platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "Ports": "8888/tcp",
+        "RunningFor": "About a minute ago",
+        "Size": "28.7kB (virtual 194MB)",
+        "State": "running",
+        "Status": "Up About a minute (healthy)"
+      },
+      {
+        "Command": "\"python app.py\"",
+        "CreatedAt": "2026-11-08 15:15:49 +0000 UTC",
+        "ID": "0413a4c86423",
+        "Image": "supinfo.local/voting-vote:1.0",
+        "Labels": "com.docker.compose.project=voting-app,com.docker.compose.service=vote,com.docker.compose.version=5.6.1,com.docker.stack.namespace=voting,com.docker.swarm.node.id=qrrtje0fray1scwwxxeiidrx3,com.docker.swarm.service.id=bt0p8pcoi0qhas4tc149f8v4h,com.docker.swarm.service.name=voting_vote,com.docker.swarm.task.id=iw91h1m1zai8th07bk30xyx09,com.docker.swarm.task.name=voting_vote.2.iw91h1m1zai8th07bk30xyx09,com.docker.swarm.task=",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "voting_vote.2.iw91h1m1zai8th07bk30xyx09",
+        "Networks": "ingress,voting_backend,voting_frontend",
+        "Platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "Ports": "8080/tcp",
+        "RunningFor": "About a minute ago",
+        "Size": "4.1kB (virtual 154MB)",
+        "State": "running",
+        "Status": "Up About a minute (healthy)"
+      }
+    ],
+    "worker2": [
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-11-08 14:44:53 +0000 UTC",
+        "ID": "1eec2b12299b",
+        "Image": "supinfo.local/voting-result:1.0",
+        "Labels": "com.docker.compose.project=voting-app,com.docker.compose.service=result,com.docker.compose.version=5.6.1,com.docker.stack.namespace=voting,com.docker.swarm.node.id=6y0gfoyrxku735gnn91pfdfb5,com.docker.swarm.service.id=r5l2w0iilf1x5gjmp8itlephm,com.docker.swarm.service.name=voting_result,com.docker.swarm.task.id=vurvt4tim0xmca39hvwcj1cii,com.docker.swarm.task.name=voting_result.2.vurvt4tim0xmca39hvwcj1cii,com.docker.swarm.task=",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "voting_result.2.vurvt4tim0xmca39hvwcj1cii",
+        "Networks": "voting_backend,voting_frontend,ingress",
+        "Platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "Ports": "8888/tcp",
+        "RunningFor": "32 minutes ago",
+        "Size": "28.7kB (virtual 194MB)",
+        "State": "running",
+        "Status": "Up 32 minutes (healthy)"
+      },
+      {
+        "Command": "\"python app.py\"",
+        "CreatedAt": "2026-11-08 14:44:53 +0000 UTC",
+        "ID": "fbbbbda6c931",
+        "Image": "supinfo.local/voting-vote:1.0",
+        "Labels": "com.docker.compose.project=voting-app,com.docker.compose.service=vote,com.docker.compose.version=5.6.1,com.docker.stack.namespace=voting,com.docker.swarm.node.id=6y0gfoyrxku735gnn91pfdfb5,com.docker.swarm.service.id=bt0p8pcoi0qhas4tc149f8v4h,com.docker.swarm.service.name=voting_vote,com.docker.swarm.task.id=agu8w5puneewu0ghg90i3jdvq,com.docker.swarm.task.name=voting_vote.1.agu8w5puneewu0ghg90i3jdvq,com.docker.swarm.task=",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "voting_vote.1.agu8w5puneewu0ghg90i3jdvq",
+        "Networks": "ingress,voting_backend,voting_frontend",
+        "Platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "Ports": "8080/tcp",
+        "RunningFor": "32 minutes ago",
+        "Size": "4.1kB (virtual 154MB)",
+        "State": "running",
+        "Status": "Up 32 minutes (healthy)"
+      }
+    ]
+  },
+  "verified": [
+    "build",
+    "compose-config",
+    "all-containers-healthy",
+    "three-vms",
+    "worker1-really-stopped",
+    "web-on-worker2-during-failure",
+    "vote-and-websocket-before-during-after",
+    "database-persistence",
+    "windows-http-during-and-after",
+    "two-web-replicas-restored"
+  ]
+}

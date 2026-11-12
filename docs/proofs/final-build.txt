@@ -1,0 +1,168 @@
+2026-11-08T15:17:08.242700+00:00
+ Image voting-vote:local Building 
+ Image voting-worker:local Building 
+ Image voting-result:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.51kB done
+#1 DONE 0.0s
+
+#2 [worker internal] load build definition from Dockerfile
+#2 transferring dockerfile: 745B 0.0s done
+#2 DONE 0.0s
+
+#3 [result internal] load build definition from Dockerfile
+#3 transferring dockerfile: 487B 0.0s done
+#3 DONE 0.1s
+
+#4 [vote internal] load build definition from Dockerfile
+#4 transferring dockerfile: 531B 0.0s done
+#4 DONE 0.1s
+
+#5 [vote internal] load metadata for docker.io/library/python:3.11-slim
+#5 ...
+
+#6 [worker internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#6 DONE 0.2s
+
+#7 [worker internal] load metadata for mcr.microsoft.com/dotnet/runtime:10.0
+#7 DONE 0.2s
+
+#8 [worker internal] load .dockerignore
+#8 transferring context: 125B 0.0s done
+#8 DONE 0.0s
+
+#9 [worker stage-1 1/4] FROM mcr.microsoft.com/dotnet/runtime:10.0@sha256:4f1f30cf0bb4ab0c8b2daa84613051683456f8df4a9bf7c812e20d74962992ac
+#9 resolve mcr.microsoft.com/dotnet/runtime:10.0@sha256:4f1f30cf0bb4ab0c8b2daa84613051683456f8df4a9bf7c812e20d74962992ac 0.0s done
+#9 DONE 0.0s
+
+#10 [worker build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e
+#10 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:212fe4cb74627d5adf9817a4088906ae3edff1bd853bb27565d4b46731efe61e 0.0s done
+#10 DONE 0.0s
+
+#11 [worker internal] load build context
+#11 transferring context: 127B 0.0s done
+#11 DONE 0.0s
+
+#12 [worker stage-1 2/4] WORKDIR /app
+#12 CACHED
+
+#13 [worker build 2/6] WORKDIR /src
+#13 CACHED
+
+#14 [worker build 5/6] COPY . .
+#14 CACHED
+
+#15 [worker build 6/6] RUN dotnet publish Worker.csproj -c Release -o /app/publish --no-restore
+#15 CACHED
+
+#16 [worker stage-1 3/4] RUN apt-get update && apt-get install -y --no-install-recommends libgssapi-krb5-2 && rm -rf /var/lib/apt/lists/* && useradd --create-home --uid 10001 appuser
+#16 CACHED
+
+#17 [worker build 3/6] COPY Worker.csproj .
+#17 CACHED
+
+#18 [worker build 4/6] RUN dotnet restore Worker.csproj
+#18 CACHED
+
+#19 [worker stage-1 4/4] COPY --from=build --chown=appuser:appuser /app/publish .
+#19 CACHED
+
+#20 [worker] exporting to image
+#20 exporting layers done
+#20 exporting manifest sha256:3ebe6ba770c688591d1e195cd9d8fed78874617b80133337f6cb0837972d948f done
+#20 exporting config sha256:27c53f4f2ef4781e5ecbe10cc7ed1b3e15edb8bc212eb534bf33aeb2b453d89d done
+#20 exporting attestation manifest sha256:97057b6457f644593dbc87e4da6c14921ed4c213b16414cffa0dd4afaa374689 0.0s done
+#20 exporting manifest list sha256:30833ecd4c28b5ec12288d1b53e8cfc14047a8e95d8bca241f0791aa431879f6 0.0s done
+#20 naming to docker.io/library/voting-worker:local done
+#20 unpacking to docker.io/library/voting-worker:local done
+#20 DONE 0.1s
+
+#21 [result internal] load metadata for docker.io/library/node:24-alpine
+#21 DONE 0.6s
+
+#5 [vote internal] load metadata for docker.io/library/python:3.11-slim
+#5 DONE 0.6s
+
+#22 [worker] resolving provenance for metadata file
+#22 DONE 0.0s
+
+#23 [result internal] load .dockerignore
+#23 transferring context: 125B 0.1s done
+#23 DONE 0.1s
+
+#24 [vote internal] load .dockerignore
+#24 transferring context: 125B 0.1s done
+#24 DONE 0.1s
+
+#25 [result internal] load build context
+#25 transferring context: 420B 0.1s done
+#25 DONE 0.1s
+
+#26 [result 1/5] FROM docker.io/library/node:24-alpine@sha256:a34ab6d7f6f4813f4d0c5469d74685604b962fbdbf5793a7bc7b4998ecb867c8
+#26 resolve docker.io/library/node:24-alpine@sha256:a34ab6d7f6f4813f4d0c5469d74685604b962fbdbf5793a7bc7b4998ecb867c8 0.0s done
+#26 DONE 0.0s
+
+#27 [vote 1/5] FROM docker.io/library/python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535
+#27 resolve docker.io/library/python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535 0.0s done
+#27 DONE 0.0s
+
+#28 [vote internal] load build context
+#28 transferring context: 306B 0.1s done
+#28 DONE 0.1s
+
+#29 [vote 3/5] COPY requirements.txt .
+#29 CACHED
+
+#30 [vote 2/5] WORKDIR /app
+#30 CACHED
+
+#31 [vote 4/5] RUN pip install --no-cache-dir -r requirements.txt && useradd --create-home --uid 10001 appuser
+#31 CACHED
+
+#32 [vote 5/5] COPY --chown=appuser:appuser . .
+#32 CACHED
+
+#33 [result 4/5] RUN npm ci --omit=dev && npm cache clean --force && addgroup -S app && adduser -S -G app app
+#33 CACHED
+
+#34 [result 2/5] WORKDIR /app
+#34 CACHED
+
+#35 [result 3/5] COPY package*.json ./
+#35 CACHED
+
+#36 [result 5/5] COPY --chown=app:app . .
+#36 CACHED
+
+#37 [vote] exporting to image
+#37 exporting layers done
+#37 exporting manifest sha256:4b47921df731e3e9f3e21f1617fbe0bca533a6762f4d638cc81a2af278e7dccd done
+#37 exporting config sha256:cd0743c995d757e4b8cf90500c030d5c422422c0056f2220a1f4a38fcd47c7c6 done
+#37 exporting attestation manifest sha256:7ec8a2b7948018f55f641d3e6c8f7561e76cab6ed8ef0d004f673b76f1c943d0 0.0s done
+#37 exporting manifest list sha256:e0420b9d143e4f9e3ff542db2bd945ad746a421d5b6b5ac5ec9b0a544320cc86 0.0s done
+#37 naming to docker.io/library/voting-vote:local
+#37 ...
+
+#38 [result] exporting to image
+#38 exporting layers done
+#38 exporting manifest sha256:57f062f1d9930215761aa4d8fe73aaad099ec6812fbe014e711d5a29e0513d59 done
+#38 exporting config sha256:3db907480616fdcaa39a43f217090369ea83a8dadc34e3c798420abc6de15d25 done
+#38 exporting attestation manifest sha256:6f204d84f81a99986bb4661bc742f12a4eb3192cdc7ef8aceb6b3e6f730de386 0.0s done
+#38 exporting manifest list sha256:4f44b55fa576ecb84630cda2d067eaeca0506d8cc11d4cb0b5ad52b2042887d2 0.0s done
+#38 naming to docker.io/library/voting-result:local 0.0s done
+#38 unpacking to docker.io/library/voting-result:local 0.0s done
+#38 DONE 0.2s
+
+#37 [vote] exporting to image
+#37 naming to docker.io/library/voting-vote:local done
+#37 unpacking to docker.io/library/voting-vote:local 0.0s done
+#37 DONE 0.2s
+
+#39 [vote] resolving provenance for metadata file
+#39 DONE 0.0s
+
+#40 [result] resolving provenance for metadata file
+#40 DONE 0.0s
+ Image voting-result:local Built 
+ Image voting-vote:local Built 
+ Image voting-worker:local Built 

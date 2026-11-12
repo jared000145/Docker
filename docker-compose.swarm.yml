@@ -1,0 +1,122 @@
+version: "3.8"
+# Images must be built and pushed to a registry reachable by every Swarm node.
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis_data:/data]
+    networks: [backend]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.voting.data == true]
+      restart_policy:
+        condition: on-failure
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    networks: [backend]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.voting.data == true]
+      restart_policy:
+        condition: on-failure
+
+  vote:
+    image: ${REGISTRY:?Set REGISTRY}/voting-vote:1.0
+    environment:
+      OPTION_A: Cats
+      OPTION_B: Dogs
+      REDIS_HOST: redis
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode: ingress
+    networks: [frontend, backend]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.role == worker
+        max_replicas_per_node: 1
+      restart_policy:
+        condition: on-failure
+      update_config:
+        order: stop-first
+        parallelism: 1
+
+  worker:
+    image: ${REGISTRY:?Set REGISTRY}/voting-worker:1.0
+    environment:
+      REDIS_HOST: redis
+      POSTGRES_CONNECTION: Host=postgres;Port=5432;Database=${POSTGRES_DB:-postgres};Username=${POSTGRES_USER:-postgres};Password=${POSTGRES_PASSWORD}
+      HEARTBEAT_FILE: /tmp/worker-heartbeat
+    networks: [backend]
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.voting.data == true]
+      restart_policy:
+        condition: on-failure
+
+  result:
+    image: ${REGISTRY:?Set REGISTRY}/voting-result:1.0
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+    ports:
+      - target: 8888
+        published: 8888
+        protocol: tcp
+        mode: ingress
+    networks: [frontend, backend]
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:8888/health',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.role == worker
+        max_replicas_per_node: 1
+      restart_policy:
+        condition: on-failure
+      update_config:
+        order: stop-first
+        parallelism: 1
+
+networks:
+  frontend:
+    driver: overlay
+    attachable: true
+  backend:
+    driver: overlay
+    internal: true
+    attachable: true
+
+volumes:
+  postgres_data:
+  redis_data:

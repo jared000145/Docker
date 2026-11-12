@@ -1,0 +1,134 @@
+2026-11-08T15:15:58.105833+00:00
+[
+    {
+        "Name": "voting_frontend",
+        "Id": "ff8rufru0ols18wn00mtqp526",
+        "Created": "2026-11-08T14:44:52.552155911Z",
+        "Scope": "swarm",
+        "Driver": "overlay",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "10.0.2.0/24",
+                    "IPRange": "",
+                    "Gateway": "10.0.2.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": true,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.driver.overlay.vxlanid_list": "4098"
+        },
+        "Labels": {
+            "com.docker.stack.namespace": "voting"
+        },
+        "Containers": {},
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "10.0.2.0/24": {
+                        "IPsInUse": 11,
+                        "DynamicIPsAvailable": 245
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Name": "voting_backend",
+        "Id": "lbrv5bq0joqohor2evqww38ba",
+        "Created": "2026-11-08T14:44:52.964454457Z",
+        "Scope": "swarm",
+        "Driver": "overlay",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "10.0.1.0/24",
+                    "IPRange": "",
+                    "Gateway": "10.0.1.1"
+                }
+            ]
+        },
+        "Internal": true,
+        "Attachable": true,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.driver.overlay.vxlanid_list": "4097"
+        },
+        "Labels": {
+            "com.docker.stack.namespace": "voting"
+        },
+        "Peers": [
+            {
+                "Name": "2bd3f7a4a2df",
+                "IP": "10.77.0.11"
+            },
+            {
+                "Name": "884a6a012c79",
+                "IP": "10.77.0.13"
+            },
+            {
+                "Name": "0d3661863187",
+                "IP": "10.77.0.12"
+            }
+        ],
+        "Containers": {
+            "56bb13f986a5d3b780b9c031027d90c13757a6b84813e898278b5e8a60ccca4d": {
+                "Name": "voting_worker.1.vnb8dbywaion9a01yldxc8fc0",
+                "EndpointID": "d2d23d9dbccb3864e5f1e4cd3259e7f7747fffe569452db28eb275a0c07220b0",
+                "MacAddress": "02:42:0a:00:01:14",
+                "IPv4Address": "10.0.1.20/24",
+                "IPv6Address": ""
+            },
+            "6ac48c7ebee6afc820b695c1fcf2e9007caaccd3fc87034badbd582e57530791": {
+                "Name": "voting_redis.1.k9ftvvfcrq3w4p08xtdai7gnu",
+                "EndpointID": "f0621345e2ca6b1aa6e6b9b03b988156d6098903506662af1ce8c3e2aa230614",
+                "MacAddress": "02:42:0a:00:01:13",
+                "IPv4Address": "10.0.1.19/24",
+                "IPv6Address": ""
+            },
+            "b6703023374247e73c56b26c78e27e2eb1153917c455be659a4e536ad9dac29c": {
+                "Name": "voting_postgres.1.tdo79zd1nl1fmczyxnla2f31f",
+                "EndpointID": "a2c8e4ac6f4e1bc7daded8c5d345b5f483187cfc1aaaf9c0144ea7c866ba51e0",
+                "MacAddress": "02:42:0a:00:01:11",
+                "IPv4Address": "10.0.1.17/24",
+                "IPv6Address": ""
+            },
+            "lb-voting_backend": {
+                "Name": "voting_backend-endpoint",
+                "EndpointID": "d964f82ebb817450d837d186828cba72f24f79f7638e474fbe4d79ddf7a35279",
+                "MacAddress": "02:42:0a:00:01:0f",
+                "IPv4Address": "10.0.1.15/24",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "10.0.1.0/24": {
+                        "IPsInUse": 18,
+                        "DynamicIPsAvailable": 238
+                    }
+                }
+            }
+        }
+    }
+]

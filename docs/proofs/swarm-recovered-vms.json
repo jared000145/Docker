@@ -1,0 +1,23 @@
+{
+  "utc": "2026-11-08T15:15:58.105833+00:00",
+  "qemu": [
+    {
+      "node": "manager",
+      "running": true,
+      "ip": "10.77.0.11",
+      "details": "supinfo-manager\n6.8.0-147-generic\nlo               UNKNOWN        127.0.0.1/8 ::1/128 \nwan0             UP             10.0.2.15/24 metric 100 fec0::5054:ff:fe77:111/64 fe80::5054:ff:fe77:111/64 \nlan0             UP             10.77.0.11/24 fe80::5054:ff:fe77:211/64 \ndocker0          DOWN           172.17.0.1/16 \ndocker_gwbridge  UP             172.18.0.1/16 fe80::e0a1:3cff:fe27:ee99/64 \nveth599ffe5@if9  UP             fe80::4b:6cff:fe2c:8875/64 \nDocker=29.1.3 Swarm=active Node=ptvgmdfdexa8ww44ku9xmsu9y"
+    },
+    {
+      "node": "worker1",
+      "running": true,
+      "ip": "10.77.0.12",
+      "details": "supinfo-worker1\n6.8.0-147-generic\nlo               UNKNOWN        127.0.0.1/8 ::1/128 \nwan0             UP             10.0.2.15/24 metric 100 fec0::5054:ff:fe77:112/64 fe80::5054:ff:fe77:112/64 \nlan0             UP             10.77.0.12/24 fe80::5054:ff:fe77:212/64 \ndocker_gwbridge  UP             172.18.0.1/16 fe80::b8e5:28ff:fe30:5a1a/64 \ndocker0          DOWN           172.17.0.1/16 \nvethc30f160@if9  UP             fe80::98ad:3dff:fe67:aed5/64 \nvethc84147a@if21 UP             fe80::a803:88ff:fe4f:1194/64 \nvethc12c7e1@if23 UP             fe80::f0d5:d3ff:fe43:e36b/64 \nDocker=29.1.3 Swarm=active Node=qrrtje0fray1scwwxxeiidrx3"
+    },
+    {
+      "node": "worker2",
+      "running": true,
+      "ip": "10.77.0.13",
+      "details": "supinfo-worker2\n6.8.0-147-generic\nlo               UNKNOWN        127.0.0.1/8 ::1/128 \nwan0             UP             10.0.2.15/24 metric 100 fec0::5054:ff:fe77:113/64 fe80::5054:ff:fe77:113/64 \nlan0             UP             10.77.0.13/24 fe80::5054:ff:fe77:213/64 \ndocker0          DOWN           172.17.0.1/16 \ndocker_gwbridge  UP             172.18.0.1/16 fe80::5cf7:f2ff:fea0:30bb/64 \nveth5d2b138@if9  UP             fe80::181b:94ff:fec2:b137/64 \nvethe2eb497@if21 UP             fe80::28d5:44ff:feaa:7220/64 \nveth185f29f@if25 UP             fe80::987a:4cff:fe02:25da/64 \nDocker=29.1.3 Swarm=active Node=6y0gfoyrxku735gnn91pfdfb5"
+    }
+  ]
+}

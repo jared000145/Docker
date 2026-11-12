@@ -1,0 +1,7 @@
+2026-11-08T15:12:19.119052+00:00
+ID             NAME              MODE         REPLICAS               IMAGE                             PORTS
+z881vv3rib3n   voting_postgres   replicated   1/1                    postgres:15-alpine                
+rfshr77d8ua5   voting_redis      replicated   1/1                    redis:7-alpine                    
+r5l2w0iilf1x   voting_result     replicated   2/2 (max 1 per node)   supinfo.local/voting-result:1.0   *:8888->8888/tcp
+bt0p8pcoi0qh   voting_vote       replicated   2/2 (max 1 per node)   supinfo.local/voting-vote:1.0     *:8080->8080/tcp
+93jm88r39kxl   voting_worker     replicated   1/1                    supinfo.local/voting-worker:1.0

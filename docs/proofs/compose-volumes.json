@@ -1,0 +1,30 @@
+[
+    {
+        "CreatedAt": "2026-11-08T14:05:45Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "694ba3f22858c380a3dd5ca3890590558d28f4b6f3a8a046b52166a0068e76a0",
+            "com.docker.compose.project": "voting-app",
+            "com.docker.compose.version": "5.6.1",
+            "com.docker.compose.volume": "postgres_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/voting-app_postgres_data/_data",
+        "Name": "voting-app_postgres_data",
+        "Options": null,
+        "Scope": "local"
+    },
+    {
+        "CreatedAt": "2026-11-08T14:05:45Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "a6a9fed2f6aa7c2cfbd7c341724a7180ee14757e7b6d50dd2717dac916fded05",
+            "com.docker.compose.project": "voting-app",
+            "com.docker.compose.version": "5.6.1",
+            "com.docker.compose.volume": "redis_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/voting-app_redis_data/_data",
+        "Name": "voting-app_redis_data",
+        "Options": null,
+        "Scope": "local"
+    }
+]

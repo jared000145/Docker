@@ -1,0 +1,49 @@
+{
+  "utc": "2026-11-08T15:12:45.232118+00:00",
+  "ready_nodes": [
+    "supinfo-manager",
+    "supinfo-worker2"
+  ],
+  "services": {
+    "vote": {
+      "desired_tasks": [
+        {
+          "CurrentState": "Running 27 minutes ago",
+          "DesiredState": "Running",
+          "Error": "",
+          "ID": "agu8w5puneewu0ghg90i3jdvq",
+          "Image": "supinfo.local/voting-vote:1.0",
+          "Name": "voting_vote.1",
+          "Node": "supinfo-worker2",
+          "Ports": ""
+        }
+      ],
+      "running_on_ready_nodes": 1
+    },
+    "result": {
+      "desired_tasks": [
+        {
+          "CurrentState": "Pending 4 seconds ago",
+          "DesiredState": "Running",
+          "Error": "\"no suitable node (1 node not available for new tasks; scheduling constraints not satisfied on 1 node; max replicas per node limit exceed)\"",
+          "ID": "khtv6kgpnlil64ubbhjteh0nl",
+          "Image": "supinfo.local/voting-result:1.0",
+          "Name": "voting_result.1",
+          "Node": "",
+          "Ports": ""
+        },
+        {
+          "CurrentState": "Running 27 minutes ago",
+          "DesiredState": "Running",
+          "Error": "",
+          "ID": "vurvt4tim0xmca39hvwcj1cii",
+          "Image": "supinfo.local/voting-result:1.0",
+          "Name": "voting_result.2",
+          "Node": "supinfo-worker2",
+          "Ports": ""
+        }
+      ],
+      "running_on_ready_nodes": 1
+    }
+  }
+}
